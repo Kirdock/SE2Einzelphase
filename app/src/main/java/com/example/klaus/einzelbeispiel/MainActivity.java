@@ -18,19 +18,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void btnCalcClick(View view) {
-        //**würg**
         EditText txtDividend = (EditText) findViewById(R.id.txtDividend);
         EditText txtDivisor = (EditText) findViewById(R.id.txtDivisor);
         TextView lblResult = (TextView) findViewById(R.id.lblResult);
-        Boolean valid = true;
 
         if(StringValid(txtDividend) && StringValid(txtDivisor)){
-            //Android is so schiach
             double result = Double.parseDouble(txtDividend.getText().toString()) / Double.parseDouble(txtDivisor.getText().toString());
             String res = result == (long) result ? String.format("%d",(long)result) : String.format("%s", result);
             lblResult.setText(res.equals("NaN") ? getString(R.string.number_invalid) : res.equals("Infinity") ? getString(R.string.infinity) : res);
-
-            //Kemma nit mit Unity  oda sowos in da Ort orbeitn? C# is so vül schena und nit so schiach wie des. Allan de GUI-Erstöllung bei Android is a Zuastond
+        }
+        else{
+            lblResult.setText("");
         }
     }
 
