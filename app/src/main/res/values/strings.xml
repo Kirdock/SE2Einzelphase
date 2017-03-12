@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Einzelbeispiel</string>
+    <string name="dividend">Dividend</string>
+    <string name="divisor">Divisor</string>
+    <string name="calculate">Berechnen</string>
+    <string name="result">Ergebnis</string>
+    <string name="required">Bitte ausfüllen!</string>
+    <string name="number_invalid">Ungültige Eingabe!</string>
+    <string name="infinity">Unendlich</string>
+</resources>
