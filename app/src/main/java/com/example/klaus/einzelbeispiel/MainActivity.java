@@ -9,26 +9,34 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private EditText txtDividend, txtDivisor;
+    private TextView lblResult;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setControls();
+    }
 
-
+    private void setControls(){
+        txtDividend = (EditText) findViewById(R.id.txtDividend);
+        txtDivisor = (EditText) findViewById(R.id.txtDivisor);
+        lblResult = (TextView) findViewById(R.id.lblResult);
     }
 
     public void btnCalcClick(View view) {
-        EditText txtDividend = (EditText) findViewById(R.id.txtDividend);
-        EditText txtDivisor = (EditText) findViewById(R.id.txtDivisor);
-        TextView lblResult = (TextView) findViewById(R.id.lblResult);
-
-        if(StringValid(txtDividend) && StringValid(txtDivisor)){
-            double result = Double.parseDouble(txtDividend.getText().toString()) / Double.parseDouble(txtDivisor.getText().toString());
-            String res = result == (long) result ? String.format("%d",(long)result) : String.format("%s", result);
-            lblResult.setText(res.equals("NaN") ? getString(R.string.number_invalid) : res.equals("Infinity") ? getString(R.string.infinity) : res);
+        try {
+            if (StringValid(txtDividend) && StringValid(txtDivisor)) {
+                double result = Double.parseDouble(txtDividend.getText().toString()) / Double.parseDouble(txtDivisor.getText().toString());
+                String res = result == (long) result ? String.format("%d", (long) result) : String.format("%s", result);
+                lblResult.setText(res.equals("NaN") ? getString(R.string.number_invalid) : res.equals("Infinity") ? getString(R.string.infinity) : res);
+            } else {
+                lblResult.setText("");
+            }
         }
-        else{
-            lblResult.setText("");
+        catch (Exception ex){
+            lblResult.setText(ex.getMessage());
         }
     }
 
